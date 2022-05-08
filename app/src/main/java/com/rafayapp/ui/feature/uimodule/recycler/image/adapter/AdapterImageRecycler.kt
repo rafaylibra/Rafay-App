@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.rafayapp.R
+import com.rafayapp.data.Brand
 import com.rafayapp.databinding.ItemImageRecyclerBinding
+import com.rafayapp.util.GlideUtil
 
 class AdapterImageRecycler(
     private val context: Context,
-    private val data: ArrayList<String>
+    private val data: ArrayList<Brand>
 ) : RecyclerView.Adapter<AdapterImageRecycler.BasicViewHolder>() {
 
     lateinit var bind: ItemImageRecyclerBinding
@@ -40,57 +43,52 @@ class AdapterImageRecycler(
         return position
     }
     //______________________________________________________________________________________________
-    private fun updateUI(holder: BasicViewHolder, item: String, position: Int) {
-        bind.store.text = item
+    private fun updateUI(holder: BasicViewHolder, item: Brand, position: Int) {
+        bind.name.text = item.name
+        bind.rating.text = item.rating.toString()
         bind.cashbacktxt.text = "Cashback"
         bind.ratinigicon.setImageResource(R.drawable.ratingicon)
         bind.cahbackicon.setImageResource(R.drawable.cashbackicon)
 
+        //GlideUtil.setImage(bind.storeimg, "https://raw.githubusercontent.com/rafaylibra/Server/main/image/foodpanda/cities/Faisalabad.jpg")
+
         when(position){
              0 -> {
-             bind.rating.text = "4.0"
              bind.cashback.text = "400RS"
              bind.storeimg.setImageResource(R.drawable.apple)
              }
 
             1 -> {
-                bind.rating.text = "4.9"
                 bind.cashback.text = "500Rs"
                 bind.storeimg.setImageResource(R.drawable.bagallery)
             }
 
             2 -> {
-                bind.rating.text = "3.5"
                 bind.cashback.text = "1000Rs"
                 bind.storeimg.setImageResource(R.drawable.elo)
             }
 
             3 -> {
-                bind.rating.text = "4.2"
                 bind.cashback.text = "800Rs"
                 bind.storeimg.setImageResource(R.drawable.jomo)
             }
 
             4 -> {
-                bind.rating.text = "5.0"
                 bind.cashback.text = "300Rs"
                 bind.storeimg.setImageResource(R.drawable.omg)
             }
 
             5 -> {
-                bind.rating.text = "3.2"
                 bind.cashback.text = "200Rs"
                 bind.storeimg.setImageResource(R.drawable.khazany)
             }
 
             6 -> {
-                bind.rating.text = "1.0"
                 bind.cashback.text = "500Rs"
                 bind.storeimg.setImageResource(R.drawable.optp)
             }
 
             7 -> {
-                bind.rating.text = "2.8"
                 bind.cashback.text = "400Rs"
                 bind.storeimg.setImageResource(R.drawable.saya)
             }
@@ -126,9 +124,9 @@ class AdapterImageRecycler(
 
     }
 
-    private fun clickListeners(holder: BasicViewHolder, item: String, position: Int) {
-        bind.root.setOnClickListener {
-            Toast.makeText(context, item, Toast.LENGTH_SHORT).show()
+    private fun clickListeners(holder: BasicViewHolder, item: Brand, position: Int) {
+        bind.name.setOnClickListener {
+            Toast.makeText(context, item.name, Toast.LENGTH_SHORT).show()
 
         }
 

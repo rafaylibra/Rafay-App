@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.rafayapp.data.Brand
 import com.rafayapp.databinding.ActivityImageRecyclerBinding
 import com.rafayapp.ui.feature.uimodule.recycler.image.adapter.AdapterImageRecycler
 
@@ -26,18 +27,19 @@ class RecyclerImageActivity : AppCompatActivity() {
     private fun setupLayout() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         //recycler view
-        val name = ArrayList<String>()
-        name.add("Red Apple") //0
-        name.add("BaGallery") //3
-        name.add("ELO") //4
-        name.add("Jomo.pk") //5
-        name.add("OH My Grill") //6
-        name.add("KHAZANY") //7
-        name.add("Optp") //8
+        val brand = ArrayList<Brand>()
+        brand.add(Brand(0, "Red Apple", 1.0)) //0
+        brand.add(Brand(0, "BaGallery", 2.0)) //0
+        brand.add(Brand(0, "ELO", 3.0)) //0
+        brand.add(Brand(0, "Jomo.pk", 4.0)) //0
+        brand.add(Brand(0, "OH My Grill", 5.0)) //0
+        brand.add(Brand(0, "KHAZANY", 6.0)) //0
+        brand.add(Brand(0, "Optp", 7.0)) //0
 
 
 
-        adapter = AdapterImageRecycler(this, name)
+
+        adapter = AdapterImageRecycler(this, brand)
         bind.imagerecycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         bind.imagerecycler.adapter = adapter
     }
